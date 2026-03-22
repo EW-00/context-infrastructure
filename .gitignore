@@ -1,0 +1,93 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+.DocumentRevisions-V100
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+pip-log.txt
+pip-delete-this-directory.txt
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+cython_debug/
+
+# Virtual environments (workspace uses root `.venv/` per WORKSPACE.md)
+.venv/
+venv/
+ENV/
+env/
+
+# Environment and secrets (keep examples tracked: *.env.example)
+.env
+.env.*
+!.env.example
+
+# Node (if you add JS tooling locally)
+node_modules/
+
+# Editors / IDEs
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# VS Code / Cursor (optional: uncomment if you prefer local-only settings)
+.vscode/
+.cursor/
+
+# Logs and temp
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+
+# OS / misc
+Thumbs.db
+Desktop.ini
