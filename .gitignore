@@ -91,3 +91,6 @@ temp/
 # OS / misc
 Thumbs.db
 Desktop.ini
+
+# Git repos
+adhoc_jobs/
