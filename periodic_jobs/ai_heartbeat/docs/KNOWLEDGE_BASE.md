@@ -39,10 +39,10 @@
   - 不要因为 Lite 项目缺少 handoff、architecture、decisions 就误判为信息缺失
 - **Standard 项目**:
   - 优先读取 `project_state.md`、`repo_map.md`
-  - 关注 `notes/daily/`、`notes/handoffs/` 与 `repos/` 的最近变化
+  - 关注 `notes/daily/`、`handoffs/` 与 `repos/` 的最近变化
 - **Heavy 项目**:
   - 优先读取 `project_state.md`、`architecture.md`、`decisions.md`、`repo_map.md`
-  - `notes/meetings/`、`notes/messages/`、`notes/handoffs/`、`notes/notion_mirror/` 都可能是高价值输入
+  - `notes/meetings/`、`notes/messages/`、`handoffs/`、`notes/notion_mirror/` 都可能是高价值输入
 
 ### 2.4 路径白名单与黑名单
 - **忽略**:

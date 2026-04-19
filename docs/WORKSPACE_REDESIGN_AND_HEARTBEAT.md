@@ -84,11 +84,11 @@
         architecture.md
         decisions.md
         repo_map.md
+      handoffs/
       notes/
         daily/
         meetings/
         messages/
-        handoffs/
         notion_mirror/
           md/
           json/
@@ -211,7 +211,7 @@ projects/<project>/
     repo_map.md
   notes/
     daily/
-    handoffs/
+  handoffs/
 ```
 
 特点：
@@ -232,11 +232,11 @@ projects/<project>/
     architecture.md
     decisions.md
     repo_map.md
+  handoffs/
   notes/
     daily/
     meetings/
     messages/
-    handoffs/
     notion_mirror/
       md/
       json/

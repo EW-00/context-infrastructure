@@ -28,7 +28,8 @@
 - Lite 项目学习笔记：`projects/<project>/notes/learning_notes/`
 - Standard / Heavy 项目每日记录：`projects/<project>/notes/daily/`
 - Heavy 项目会议记录：`projects/<project>/notes/meetings/`
-- Standard / Heavy 项目 handoff：`projects/<project>/notes/handoffs/`
+- Standard / Heavy 项目 handoff：`projects/<project>/handoffs/`
+- Heavy 项目消息存档：`projects/<project>/notes/messages/`
 - Heavy 项目 Notion 本地镜像：`projects/<project>/notes/notion_mirror/`
 
 ### 系统与规则
@@ -52,6 +53,3 @@
 <!-- 随着你的项目增长，在这里添加活跃项目的快捷路由 -->
 <!-- 格式：- `project-name` → `projects/project_name/` (说明) -->
 - `heavy_template` → `projects/heavy_template/` (Heavy 项目模板；复制后作为复杂项目的起点)
-- `mo_book` → `projects/mo_book/` (Lite 个人项目样板；真实 repo 位于 `repos/mo_book/`，学习笔记放 `notes/learning_notes/`)
-- `intro_optimization_ds` → `projects/intro_optimization_ds/` (Lite 学习型项目；课程资料放 `materials/`，笔记放 `notes/learning_notes/`)
-- `videos_transcribe` → `projects/videos_transcribe/` (Lite 产物型项目；转录与分析放 `artifacts/transcripts/`)
