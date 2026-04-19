@@ -138,7 +138,7 @@ opencode run \
 
 **启动 Server**: `opencode web --port 4096`（或 `opencode serve --port 4096`）
 
-**Python 客户端**: `periodic_jobs/ai_heartbeat/src/v0/opencode_client.py` 已实现常用 API 封装
+**Python 客户端**: `periodic_jobs/ai_heartbeat/opencode_client.py` 已实现常用 API 封装
 - `create_session()` / `send_message()` / `get_session_messages()` / `wait_for_session_complete()`
 
 **模型格式**: `provider/model` (如 `xai/grok-4.20-experimental-beta-0304-non-reasoning`, `anthropic/claude-sonnet-4-20250514`)

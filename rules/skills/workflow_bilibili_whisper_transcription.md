@@ -10,7 +10,7 @@
 ## 路径约定
 
 - 临时下载与中间产物：`tmp/<task_name>/`
-- 最终可长期保留的 transcript：`adhoc_jobs/videos_transcribe/transcripts/`
+- 最终可长期保留的 transcript：`projects/videos_transcribe/artifacts/transcripts/`
 - 最终默认只保留**不带时间轴的纯文本脚本**，文件名建议：`YYYYMMDD_platform_videoid_short_slug.md`
 - 音频、`.srt`、`.vtt`、`.tsv`、`.json` 等中间产物在 transcript 落盘后清理到废纸篓
 
@@ -69,7 +69,7 @@ Whisper 原始输出通常需要后处理：
 
 **转录阶段：** 多进程（4-8） + 指定language参数 + 跳过已处理文件 + 根据硬件选择模型
 
-**落盘阶段：** 在 `tmp/` 完成下载和转录，整理出纯文本脚本后移入 `adhoc_jobs/videos_transcribe/transcripts/`
+**落盘阶段：** 在 `tmp/` 完成下载和转录，整理出纯文本脚本后移入 `projects/videos_transcribe/artifacts/transcripts/`
 
 **清理阶段：** transcript 落盘后删除或回收音频、时间轴字幕和 sidecar 文件，只保留最终脚本
 

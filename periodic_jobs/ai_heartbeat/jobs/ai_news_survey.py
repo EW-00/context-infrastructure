@@ -58,7 +58,7 @@ def run_ai_news_survey(mode="weekly", model_id="anthropic/claude-opus-4-6", publ
 
 - **Kit 发布**：使用 Kit Broadcast 发送给所有订阅者并发布到 web：
   ```bash
-  python3 periodic_jobs/ai_heartbeat/src/v0/kit_broadcast.py {report_path}
+  python3 periodic_jobs/ai_heartbeat/kit_broadcast.py {report_path}
   ```
   脚本会自动将 Markdown 转换为 HTML，并在 2 分钟后发送给所有 Kit 订阅者。
   - **邮件标题**：直接使用报告第一行的标题（如 `[鸭哥 AI 日报] 2026-02-28`）"""

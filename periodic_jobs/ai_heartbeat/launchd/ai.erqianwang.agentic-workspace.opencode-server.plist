@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>ai.erqianwang.agentic-workspace.opencode-server</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/erqianwang/Repos/agentic-workspace/periodic_jobs/ai_heartbeat/launchd/run_opencode_server.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/erqianwang/Repos/agentic-workspace</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/agentic-workspace-opencode-server.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/agentic-workspace-opencode-server.err.log</string>
+</dict>
+</plist>

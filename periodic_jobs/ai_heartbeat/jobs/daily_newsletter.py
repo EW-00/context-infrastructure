@@ -70,7 +70,7 @@ def run_daily_newsletter(date_str: str, dry_run: bool = False, model_id: str = D
 
 ```bash
 source periodic_jobs/ai_heartbeat/.venv/bin/activate && \\
-  python periodic_jobs/ai_heartbeat/src/v0/kit_broadcast.py \\
+  python periodic_jobs/ai_heartbeat/kit_broadcast.py \\
   {output_path}
 ```
 

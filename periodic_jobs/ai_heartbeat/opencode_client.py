@@ -7,15 +7,20 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 module_dir = Path(__file__).resolve().parent
-project_env_path = module_dir.parent.parent / ".env"
+workspace_env_path = module_dir.parents[1] / ".env"
+project_env_path = module_dir / ".env"
 legacy_env_path = module_dir.parent / ".env"
-if project_env_path.exists():
+
+if workspace_env_path.exists():
+    load_dotenv(workspace_env_path)
+elif project_env_path.exists():
     load_dotenv(project_env_path)
 else:
     load_dotenv(legacy_env_path)
 
 # Message timeout: agentic tasks can run 10–60+ min. Default 1 hour.
 MESSAGE_TIMEOUT = int(os.getenv("OPENCODE_MESSAGE_TIMEOUT", "3600"))
+DEFAULT_AGENT = os.getenv("OPENCODE_AGENT", "build")
 
 class OpenCodeClient:
     def __init__(self):
@@ -94,8 +99,10 @@ class OpenCodeClient:
             time.sleep(poll_interval)
         return False
 
-    def send_message(self, session_id, message, model_id="antigravity-gemini-3-flash", provider_id=None, agent="OpenCode-Builder"):
+    def send_message(self, session_id, message, model_id="antigravity-gemini-3-flash", provider_id=None, agent=None):
         try:
+            if agent is None:
+                agent = DEFAULT_AGENT
             # Auto-detect provider from model_id if not specified
             if provider_id is None:
                 provider_id = "google"

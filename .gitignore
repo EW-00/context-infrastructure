@@ -88,9 +88,10 @@ tmp/
 temp/
 *.tmp
 
+# Projects are local AI-readable workspaces, not part of the root git history.
+/projects/*
+!/projects/README.md
+
 # OS / misc
 Thumbs.db
 Desktop.ini
-
-# Git repos
-adhoc_jobs/

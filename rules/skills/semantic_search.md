@@ -103,7 +103,7 @@ find contexts/wechat -name "*.csv" > tmp/search_files.txt
 find contexts/<your-project> -name "*.md" > tmp/search_files.txt
 
 # 搜索任意临时文档
-ls adhoc_jobs/some_project/*.txt > tmp/search_files.txt
+find projects/some_project -name "*.txt" > tmp/search_files.txt
 ```
 
 ---

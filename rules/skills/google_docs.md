@@ -14,9 +14,9 @@
 
 ## Prerequisites
 
-- 项目位置：`adhoc_jobs/gdocs_skill/`
-- Python venv：`adhoc_jobs/gdocs_skill/.venv/`（用 `uv` 创建）
-- OAuth 凭证：`adhoc_jobs/gdocs_skill/secrets/credentials.json` 必须存在
+- 项目位置：`projects/gdocs_skill/`
+- Python venv：`projects/gdocs_skill/.venv/`（用 `uv` 创建）
+- OAuth 凭证：`projects/gdocs_skill/secrets/credentials.json` 必须存在
 - 首次使用需完成 OAuth 授权（浏览器弹窗），详见项目 `README.md`
 
 ## 调用方式
@@ -24,7 +24,7 @@
 所有命令在项目目录下通过 `python -m gdocs` 调用，输出均为 JSON。
 
 ```bash
-cd /path/to/knowledge_working/adhoc_jobs/gdocs_skill && source .venv/bin/activate
+cd /path/to/knowledge_working/projects/gdocs_skill && source .venv/bin/activate
 ```
 
 ## 常见场景

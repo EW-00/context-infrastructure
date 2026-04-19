@@ -18,7 +18,7 @@
 - CSS 模板位于 `tools/share_report.css`
 - GA4 追踪片段位于 `tools/share_report_ga4.html`
 - TTS 语音播报片段位于 `tools/share_report_tts.html`
-- 本地项目目录：`adhoc_jobs/yage_share/`（含 manifest.json、gen_index.py、site/）
+- 本地项目目录：`projects/yage_share/`（含 manifest.json、gen_index.py、site/）
 
 ## Usage
 
@@ -56,7 +56,7 @@ tail -n +2 <input.md> > /tmp/<slug>_no_h1.md
 
 ```bash
 pandoc /tmp/<slug>_no_h1.md \
-  -o adhoc_jobs/yage_share/site/<slug>.html \
+  -o projects/yage_share/site/<slug>.html \
   --standalone \
   --embed-resources \
   --metadata title="<报告标题>" \
@@ -66,11 +66,11 @@ pandoc /tmp/<slug>_no_h1.md \
   --include-after-body=tools/share_report_tts.html
 ```
 
-注意：输出直接写到 `adhoc_jobs/yage_share/site/` 目录。
+注意：输出直接写到 `projects/yage_share/site/` 目录。
 
 #### 第 3 步：更新 manifest.json
 
-编辑 `adhoc_jobs/yage_share/manifest.json`，在 `articles` 数组中添加新条目：
+编辑 `projects/yage_share/manifest.json`，在 `articles` 数组中添加新条目：
 
 ```json
 {
@@ -101,7 +101,7 @@ pandoc /tmp/<slug>_no_h1.md \
 **仅当 `indexed: true` 时执行此步**：
 
 ```bash
-cd adhoc_jobs/yage_share && python3 gen_index.py
+cd projects/yage_share && python3 gen_index.py
 ```
 
 这会读取 manifest.json，过滤 `indexed: true` 的文章，按日期倒序生成 `site/index.html`。
@@ -110,18 +110,18 @@ cd adhoc_jobs/yage_share && python3 gen_index.py
 
 ```bash
 # 上传文章
-rsync adhoc_jobs/yage_share/site/<slug>.html <your-server>:/var/www/yage/share/
+rsync projects/yage_share/site/<slug>.html <your-server>:/var/www/yage/share/
 ssh <your-server> "chmod 644 /var/www/yage/share/<slug>.html"
 
 # 如果更新了 index.html，也上传
-rsync adhoc_jobs/yage_share/site/index.html <your-server>:/var/www/yage/share/
+rsync projects/yage_share/site/index.html <your-server>:/var/www/yage/share/
 ssh <your-server> "chmod 644 /var/www/yage/share/index.html"
 ```
 
 #### 第 6 步：git commit manifest 变更
 
 ```bash
-cd adhoc_jobs/yage_share && git add manifest.json && git commit -m "add: <slug>"
+cd projects/yage_share && git add manifest.json && git commit -m "add: <slug>"
 ```
 
 ### slug 命名规则
@@ -163,7 +163,7 @@ curl -s -o /dev/null -w "%{http_code}" https://<your-domain>/share/<slug>.html
 ```bash
 # 用 --resource-path 指定图片搜索目录（通常是 MD 文件所在目录）
 pandoc <input.md> \
-  -o adhoc_jobs/yage_share/site/<slug>.html \
+  -o projects/yage_share/site/<slug>.html \
   --standalone \
   --embed-resources \
   --resource-path=<md文件所在目录> \
@@ -179,7 +179,7 @@ pandoc <input.md> \
 发布前验证：
 ```bash
 # 确认图片已内嵌
-grep -c 'data:image' adhoc_jobs/yage_share/site/<slug>.html
+grep -c 'data:image' projects/yage_share/site/<slug>.html
 # 应输出图片数量（>0）
 ```
 
@@ -201,5 +201,5 @@ grep -c 'data:image' adhoc_jobs/yage_share/site/<slug>.html
 - share 目录公开可访问，不要上传敏感内容
 - 如需删除已发布内容：`ssh <your-server> "rm /var/www/yage/share/<slug>.html"`
 - **重要：使用 `--metadata title` 时，Markdown 文件的第一行不应该是 `# ` 标题**。pandoc 会从 metadata 自动生成一个 h1 元素，如果 Markdown 中还有 `# ` 标题，HTML 输出会出现两个 h1 元素。解决方案：删除 Markdown 中的 `# ` 标题行，让 pandoc 的 metadata title 单独提供 h1。
-- 本地项目目录 `adhoc_jobs/yage_share/` 是 manifest 和 site 的 source of truth
+- 本地项目目录 `projects/yage_share/` 是 manifest 和 site 的 source of truth
 - `site/` 下的 HTML 文件被 .gitignore 忽略，只有 manifest.json 和脚本被 git 追踪

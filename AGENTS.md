@@ -1,6 +1,6 @@
 # AGENTS.md - Your Workspace
 
-> **First time here?** Start with `setup_guide.md` — it'll walk you through setup in under an hour.
+> **First time here?** Start with `setup_guide.md` — it captures the current setup path and operating model.
 
 This folder is home. Treat it that way.
 
@@ -68,6 +68,7 @@ Don't ask permission. Just do it.
 - **L3（全局约束）**：`rules/` 下的所有文件，每次 session 被动加载
 - **L1/L2（动态记忆）**：`contexts/memory/OBSERVATIONS.md`，agent 主动检索
 - **自动积累**：`periodic_jobs/ai_heartbeat/` 每日 observer + 每周 reflector
+- **当前运行方式**：macOS 主路径使用 `launchd` 常驻 OpenCode Server，并定时触发 observer / reflector
 
 ## Safety
 

@@ -6,7 +6,7 @@
 - **信息密度**：你要像一个资深的架构师一样思考。如果一条信息在未来 3 个月内不会对你或你的主人产生任何复用价值，那就果断丢弃。宁可少记，绝不凑数。
 
 ## 1. 核心执行准则 (The Agentic Way)
-- **ROOT_DIR**: 所有的路径引用均相对于项目根目录 (`/path/to/your/workspace/`)。
+- **ROOT_DIR**: 所有的路径引用均相对于当前 workspace 根目录。
 - **文件持久化**: 你不仅仅是回答问题。你的最终交付物是修改文件。
 - **自主加载**: 你必须先加载以下全局约束，确保你的行为与项目哲学一致：
   - `AGENTS.md` (工作区全局视图)
@@ -18,14 +18,47 @@
 - **降低依赖 Git**: 本项目根目录的git不包括所有文件，内部包含大量嵌套的独立 Git 仓库。基于 Git 的全局 Diff 往往无法覆盖所有子模块且逻辑碎片化。但是具体的子模块在确定理解git结构的前提下也可以使用git。
 - **推荐工具**: 优先使用系统级的 `find`, `ls` 工具进行扫描。例如：`find . -name "*.md" -type f -mtime -1`。
 
-### 2.2 Blog 内容识别
-- **路径**: `contexts/blog/content/`
-- **逻辑**: 绝不可仅凭文件变动列表（Git/Find）就判定为新内容。
-- **校验**: 必须读取 Markdown Header 中的 `Date` 字段。仅当 `Date` 为今天或当前观测区间时，才视为有效。忽略格式重排导致的旧文章误报。
+### 2.2 当前 workspace 的主输入源
+- **项目域优先**: 当前 workspace 的主要输入源在 `projects/`，而不是旧的平铺项目目录。
+- **高信号入口**:
+  - `projects/<project>/docs/overview.md`
+  - `projects/<project>/docs/project_state.md`
+  - `projects/<project>/docs/repo_map.md`
+  - `projects/<project>/docs/architecture.md`
+  - `projects/<project>/docs/decisions.md`
+- **原始上下文入口**:
+  - `projects/<project>/notes/`
+  - `projects/<project>/repos/`
+  - `projects/<project>/materials/`
+  - `projects/<project>/artifacts/`
 
-### 2.3 路径白名单与黑名单
-- **忽略**: `contexts/daily_records/` (机械重复性数据)。
-- **包含**: `contexts/life_record/` 及其子目录下的 `.csv` 文件。
+### 2.3 按项目模板扫描
+- **Lite 项目**:
+  - 优先读取 `docs/overview.md`
+  - 将 `materials/` 和 `artifacts/` 视为内容资产，而非工程化代码库
+  - 不要因为 Lite 项目缺少 handoff、architecture、decisions 就误判为信息缺失
+- **Standard 项目**:
+  - 优先读取 `project_state.md`、`repo_map.md`
+  - 关注 `notes/daily/`、`notes/handoffs/` 与 `repos/` 的最近变化
+- **Heavy 项目**:
+  - 优先读取 `project_state.md`、`architecture.md`、`decisions.md`、`repo_map.md`
+  - `notes/meetings/`、`notes/messages/`、`notes/handoffs/`、`notes/notion_mirror/` 都可能是高价值输入
+
+### 2.4 路径白名单与黑名单
+- **忽略**:
+  - `.git/`
+  - `.venv/`
+  - `__pycache__/`
+  - `.gitkeep`
+  - `.DS_Store`
+  - `contexts/daily_records/` 中纯机械性的流水
+- **优先包含**:
+  - `projects/` 下所有项目域的 `docs/`
+  - `projects/` 下最近变动的 `notes/`、`repos/`、`materials/`、`artifacts/`
+
+### 2.5 内容型项目识别
+- **逻辑**: 绝不可仅凭文件变动列表就把内容型项目中的单个文件判定为“值得进入长期记忆”。
+- **校验**: 对 Lite 项目中的教材、转录、分析文档，应先判断它们是否提供了可复用的入口、结构变化、重要索引或方法论结论。若只是新文件或新转录稿本身，通常不应直接晋升为高层记忆。
 
 ## 3. 记忆系统分级规范 (Memory Tiering System)
 
@@ -58,9 +91,10 @@
 ### 4.2 反思与晋升 (L2 Reflector)
 - **核心目标**: 实现从“短期观测”到“长期规则”的进化。
 - **操作文件**:
-  1. **规则层 (L3)**: 直接根据最新观测到的有效规律、语言风格变化、以及长效约束，修改或更新 `rules/` 下的核心规则文件 (`SOUL.md`, `USER.md`, `COMMUNICATION.md`, `WORKSPACE.md`)。
-  2. **记忆层 (L1/L2)**: 重写 `contexts/memory/OBSERVATIONS.md`。执行垃圾回收，删除已被固化进 rules 的内容以及过期的 🟢 记录。
-- **职责**: 确保 `rules/` 始终代表系统的最新“进化状态”。
+  1. **候选层**: 先将稳定模式写入 `contexts/reflection/skill_candidates.md`、`axiom_candidates.md`、`sync_candidates.md`。
+  2. **规则层 (L3)**: 在人工审核后，将真正成熟的内容晋升到 `rules/` 下的核心规则文件 (`SOUL.md`, `USER.md`, `COMMUNICATION.md`, `WORKSPACE.md`) 或相应的 `skills/`、`axioms/`。
+  3. **记忆层 (L1/L2)**: 重写 `contexts/memory/OBSERVATIONS.md`。执行垃圾回收，删除已被固化进候选层或规则层的内容，以及过期的 🟢 记录。
+- **职责**: 确保长期规则层保持稀疏、高密度、可复用，同时保留人工审核边界。
 
 ## 5. 执行角色隔离 (Role Isolation)
 - **Observer (L1)** 和 **Reflector (L2)** 是独立的任务阶段。
@@ -68,6 +102,6 @@
 - 这种隔离是为了防止在观测阶段引入未经人类确认的规则变动。
 
 ## 6. 回报机制 (Reporting)
-- 在完成文件写入后，你只需在 Chat 中给出一个简短的 Summary（Walkthrough）。
+- 在完成文件写入后，你只需在 Chat 中给出一个简短的 Summary。
 - **Observer 汇报点**: 处理了哪些项目，基于 Metadata 过滤掉了多少噪音。
-- **Reflector 汇报点**: 哪些观测点变成了正式规则。
+- **Reflector 汇报点**: 哪些观测点进入了 candidates，哪些已经足够成熟、可以提交人工审核后再晋升为正式规则。

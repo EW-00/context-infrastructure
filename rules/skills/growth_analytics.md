@@ -131,7 +131,7 @@ python tools/ga4_metrics.py weekly --days 30
 
 ## 数据存储
 
-如需持久化历史数据，用 `--output` 参数保存 JSON。增长分析项目的历史数据和报告位于 `adhoc_jobs/website_growth/`。
+如需持久化历史数据，用 `--output` 参数保存 JSON。增长分析项目的历史数据和报告位于 `projects/website_growth/`。
 
 ## 注意事项
 

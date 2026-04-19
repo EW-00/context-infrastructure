@@ -1,6 +1,6 @@
 # Memory Observations
 
-这是三层记忆系统的 L1/L2 层。每日观察由 `periodic_jobs/ai_heartbeat/src/v0/observer.py` 自动写入，每周由 `reflector.py` 整理和蒸馏。
+这是三层记忆系统的 L1/L2 层。每日观察由 `periodic_jobs/ai_heartbeat/observer.py` 自动写入，每周由 `periodic_jobs/ai_heartbeat/reflector.py` 整理和蒸馏。
 
 ## 格式说明
 
@@ -37,3 +37,10 @@ grep -A 20 "Date: $(date -v-7d +%Y-%m-%d)" contexts/memory/OBSERVATIONS.md
 ---
 
 <!-- 以下是记录区域，由 observer.py 自动追加 -->
+
+Date: 2026-04-19
+
+🔴 High: `docs/WORKSPACE_REDESIGN_AND_HEARTBEAT.md`, `rules/WORKSPACE.md`, and `projects/heavy_template/docs/decisions.md` converge on a stable workspace boundary: shared cognition stays in `rules/`, `contexts/`, `tools/`, and `periodic_jobs/`, while project-specific code and context move under `projects/<project>/`; `contexts/memory/OBSERVATIONS.md` remains machine-local and only reviewed abstractions are intended to sync outward.
+🟡 Medium: `periodic_jobs/ai_heartbeat/observer.py`, `periodic_jobs/ai_heartbeat/reflector.py`, `periodic_jobs/ai_heartbeat/opencode_client.py`, and `periodic_jobs/ai_heartbeat/docs/KNOWLEDGE_BASE.md` now define a concrete two-stage memory pipeline with explicit L1 idempotent append behavior, separate L2 candidate promotion, and a scriptable OpenCode Server client that loads credentials from the workspace root.
+🟡 Medium: `periodic_jobs/ai_heartbeat/launchd/README.md`, `periodic_jobs/ai_heartbeat/launchd/run_observer.sh`, `periodic_jobs/ai_heartbeat/launchd/run_reflector.sh`, and `periodic_jobs/ai_heartbeat/launchd/ai.erqianwang.agentic-workspace.heartbeat-observer.plist` show that Heartbeat has been operationalized as macOS `launchd` jobs with server-readiness checks before execution, which closes the reliability gap still called out in `docs/CRONTAB.md`.
+🟡 Medium: `projects/intro_optimization_ds/docs/overview.md`, `projects/mo_book/docs/overview.md`, and `projects/videos_transcribe/docs/overview.md` classify the active personal projects as Lite/content-oriented domains, so the durable signal is in their `docs/overview.md` entry points while `materials/`, `artifacts/`, and nested repo internals should usually be treated as content assets rather than automatic long-term memory candidates.
