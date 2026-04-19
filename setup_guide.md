@@ -192,3 +192,7 @@ A：可以。`observer.py` 的核心逻辑是构造 prompt 并调用 AI；你可
 ## 下一步
 
 系统搭好后，真正的积累才刚开始。关键是持续使用：把你的工作放进 `projects/`，让 AI 持续读项目文档、代码和 Heartbeat 产物。随着时间推移，系统会越来越懂你。
+
+如果你下一步要把这套系统迁到工作电脑，直接看：
+
+- `docs/MCKINSEY_LAPTOP_MIGRATION_CHECKLIST.md`
