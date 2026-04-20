@@ -61,6 +61,7 @@
 - [视频下载与语音识别工作流](./workflow_bilibili_whisper_transcription.md) — Bilibili/YouTube 视频处理
 - [延时执行技能](./delayed_execution.md) ⚙️ — 定时任务：sleep + 后台执行，或 OpenCode API 智能任务
 - [聊天会话蒸馏](./chat_session_distillation.md) ✅ — 将长聊天中的高价值内容分流到 handoff、decisions 与后续 candidate
+- [任务交接协议](./workflow_task_handoff.md) ✅ — checkpoint / handoff / resume 的标准流程，含 handoff 瘦身原则
 
 ### BestPractice（最佳实践）
 

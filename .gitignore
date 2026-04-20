@@ -87,6 +87,7 @@ logs/
 tmp/
 temp/
 *.tmp
+*.patch
 
 # Projects are local AI-readable workspaces, not part of the root git history.
 /projects/*
