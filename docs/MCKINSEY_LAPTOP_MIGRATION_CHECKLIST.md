@@ -229,7 +229,7 @@ projects/<project>/
 
 - `architecture.md`
 - `decisions.md`
-- `notes/handoffs/`
+- `handoffs/`
 - `notes/notion_mirror/`
 
 ## 8. 什么可以同步回共享层

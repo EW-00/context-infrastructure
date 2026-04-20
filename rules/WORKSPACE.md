@@ -29,6 +29,7 @@
 - Standard / Heavy 项目每日记录：`projects/<project>/notes/daily/`
 - Heavy 项目会议记录：`projects/<project>/notes/meetings/`
 - Standard / Heavy 项目 handoff：`projects/<project>/handoffs/`
+- Standard / Heavy 项目聊天蒸馏：`projects/<project>/chat_session_distillations/`
 - Heavy 项目消息存档：`projects/<project>/notes/messages/`
 - Heavy 项目 Notion 本地镜像：`projects/<project>/notes/notion_mirror/`
 

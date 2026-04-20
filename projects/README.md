@@ -6,7 +6,9 @@
 
 - `repos/`：真实代码仓库
 - `docs/`：高信号项目文档
-- `notes/`：daily log、meeting、message、handoff、Notion 镜像
+- `notes/`：daily log、meeting、message、Notion 镜像
+- `handoffs/`：跨 chat / 跨 agent 的任务续工信息
+- `chat_session_distillations/`：长聊天结束后的高价值蒸馏记录
 
 目标是让 AI 能在同一个工作区里同时看到：
 

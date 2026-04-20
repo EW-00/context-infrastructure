@@ -33,9 +33,9 @@ Updated: YYYY-MM-DD HH:MM
 ## Objective
 一句话：最终要达成什么。
 
-## Key Decisions
-- 决策 1：选了 X，因为 Y（排除 Z 的原因）
-- 决策 2：...
+## Task-Critical Decisions
+- 只记录仍然影响下一步执行的关键决策摘要
+- 如果某个决策已经是长期项目决策，转写到 `projects/<project>/docs/decisions.md`
 
 ## Current Status
 - [x] 已完成的步骤
@@ -55,9 +55,26 @@ Updated: YYYY-MM-DD HH:MM
 ### 写交接的原则
 
 - **写给下一个完全没有上下文的 AI**，不要假设它知道任何之前的对话
-- **决策背景比结论更重要**——写清楚"为什么"，不只是"是什么"
+- **handoff 只服务续工**——优先写"现在做到哪、下一步是什么、卡在哪"
+- **决策只保留当前仍影响续工的摘要**——长期有效的项目决策转去 `docs/decisions.md`
 - **文件路径要具体**——写 `projects/<project>/repos/repo-name/path/to/file.py` 的 `ClassName.method()`，不要写"那个文件"
 - **状态要可执行**——下一步能直接动手，不需要再问"从哪开始"
+
+### 不要让 handoff 变成决策档案
+
+以下内容不应该长期堆在 `HANDOFF.md`：
+
+- 完整设计推理过程
+- 历史上所有 decision log
+- 已经稳定、不再影响当前续工的选择理由
+
+如果这些内容很重要，应转写到：
+
+- `projects/<project>/docs/decisions.md`
+
+如果这些内容来自刚结束的一轮长聊天，优先运行：
+
+- `rules/skills/chat_session_distillation.md`
 
 ## 恢复任务（Resume）
 
@@ -73,7 +90,8 @@ Updated: YYYY-MM-DD HH:MM
 
 1. 更新 `HANDOFF.md`，所有步骤标记完成
 2. 在 `INDEX.md` 中将任务从"任务列表"移到"归档"
-3. 如有跨任务通用的经验教训，写入 `contexts/memory/OBSERVATIONS.md`
+3. 如有长期有效的项目决策，补写到 `projects/<project>/docs/decisions.md`
+4. 如有跨任务通用的经验教训，再考虑是否值得进入后续 reflection / candidate 流程
 
 ## 主动提醒时机
 
@@ -81,3 +99,8 @@ Updated: YYYY-MM-DD HH:MM
 - 对话已经很长，且完成了一个阶段性目标
 - 即将开始一个可能出错需要回退的操作
 - 用户明确说"今天先到这"或类似结束信号
+
+如果这一轮聊天里产生了较多设计权衡、偏好暴露或可复用模式，优先建议：
+
+- 先做 `chat_session_distillation`
+- 再把其中的 task continuation 写入 `HANDOFF.md`
